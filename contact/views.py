@@ -69,8 +69,11 @@ class CompanyDetailView(RedirectPermissionRequiredMixin, DetailView):
     permission_required= 'contact.view_company'
     def get_context_data(self, **kwargs):
         context = super(CompanyDetailView, self).get_context_data(**kwargs)
+        company_id = self.get_object().id
         context["projects"] = Project.objects.all()
+        context["company_projects"] = Project.objects.filter(company=company_id)
         context["employees"] = Employee.objects.all()
+        context["company_employees"] = Employee.objects.filter(company=company_id)
         return context 
 class CompanyDeleteView(RedirectPermissionRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Company
@@ -127,7 +130,9 @@ class ClientDetailView(RedirectPermissionRequiredMixin, DetailView):
     permission_required= 'contact.view_employee'
     def get_context_data(self, **kwargs):
         context = super(ClientDetailView, self).get_context_data(**kwargs)
+        employee_id = self.get_object().id
         context["projects"] = Project.objects.all()
+        context["client_projects"] = Project.objects.filter(manager=employee_id)
         return context
 
 class ClientDeleteView(RedirectPermissionRequiredMixin, SuccessMessageMixin, DeleteView):

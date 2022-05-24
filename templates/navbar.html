@@ -90,18 +90,18 @@
           
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-               {% if user.logo %} 
+              {% if user.picture %} 
                 <img src="{{user.picture.url}}" alt="profile"/>
-                {% else %} 
-                <img  src="{% static 'images/favicon.png' %}" alt="logo"/> 
-                {% endif %}
+              {% else %} 
+                <img  src="{% static 'images/avatar.png' %}" alt="logo"/> 
+              {% endif %}
               </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                 <a class="dropdown-item"  href="{% url 'accounts:userdetail' %}">
-                  {% if user.logo %} 
+                {% if user.picture %} 
                   <img src="{{user.picture.url}}" alt="profile"/>
                 {% else %} 
-                <img  src="{% static 'images/favicon.png' %}" alt="logo"/> 
+                <img  src="{% static 'images/avatar.png' %}" alt="logo"/> 
                 {% endif %}
                   Profile
                 </a>

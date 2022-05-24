@@ -51,58 +51,7 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body d-flex flex-column">
-                  <h4 class="card-title">
-                    Subscription reminders
-                  </h4>
-                  <div class="flex-grow-1 d-flex flex-column justify-content-between">
-                    <div class="row">
-                      <div class="col-sm-12">
-                          <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
-                              <thead>
-                                  <tr role="row">
-                                      <th>Project</th>
-                                      <th>Type</th>
-                                      <th>Contract</th>
-                                      <th>subscriptions</th>
-                                  </tr>
-                              </thead>
-                              <tbody> 
-                                  {% for project in subscriptions %}
-                              <tr role="row" class="odd">
-                                      <td ><a href="{% url 'project:projectdetail' project.pk %}">
-                                        <span class="badge badge-pill badge-light">{{project.name}} </span></a></td>
-                                      <td> {{project.get_project_type_display}}</td>
-                                      <td>{{project.get_contract_display}}</td>
-                                      <td ><span  class="d-block text-danger"> {{project.contract_expiration}} </span></td>
-                                  </tr>    
-                              {% endfor %}
-                              </tbody>
-                              </table>
-                          </div>
-                      </div>
-                  </div>
-                  </div>
-            </div>
-          </div>
-            <div class="col-md-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body"><div style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-                  <h4 class="card-title">
-                    <i class="fas fa-chart-line"></i>
-                    Projects
-                  </h4>
-                  <canvas id="myChart" style="display: block; height: 272px; width: 545px;"  width="681" height="340"></canvas>
-                </div>
-              </div>
-            </div>
-        
-          </div>
-       
-    <!-- second line of lists-->
+    <!-- first line of lists-->
       <div class="row">
         <div class="col-lg-6 grid-margin stretch-card">
           <div class="card">
@@ -114,7 +63,7 @@
                 <div class="row">
                   <div class="col-sm-12">
                       <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
-                          <thead>
+                          <thead style="background-color: #2b2155; color:#fff;">
                               <tr role="row">
                                 <th>Project</th>
                                 <th>Deadline</th>
@@ -127,9 +76,16 @@
                           <tr role="row" class="odd">
                                   <td ><a href="{% url 'project:projectdetail' project.pk %}">
                                     <span class="badge badge-pill badge-light">{{project.name}} </span></a></td>
-                                  <td class="d-block text-info">{{project.deadline}}</td>
-                                  <td> {{project.get_project_type_display}}</td>
-                                  <td>{{project.get_status_display}}</td>
+                                  <td class="d-block text-danger">{{project.deadline}}</td>
+                                  <td>{{project.get_project_type_display}}</td>
+                                  <td> 
+                                      {% if project.get_status_display == 'confirm' %}
+                                          <span class="badge badge-pill badge-success"> {{project.get_status_display}}</span>
+                                      {% elif project.get_status_display == 'completed' %}
+                                            <span class="badge badge-pill badge-info">{{project.get_status_display}}</span>
+                                      {% else  %}
+                                          <span class="badge badge-pill badge-warning">{{project.get_status_display}}</span>
+                                      {% endif %}</td>
                               </tr>    
                           {% endfor %}
                           </tbody>
@@ -150,7 +106,7 @@
               <div class="row">
                 <div class="col-sm-12">
                     <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
-                        <thead>
+                        <thead style="background-color: #2b2155; color:#fff;">
                             <tr role="row">
                               <th>Name</th>
                               <th>Phone</th>
@@ -191,66 +147,67 @@
       </div>
     
       </div>
-  
+  </div>
+      
+    <!-- second line of lists-->
       
       
-      
+          <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body d-flex flex-column">
+                  <h4 class="card-title">
+                    Subscription reminders
+                  </h4>
+                  <div class="flex-grow-1 d-flex flex-column justify-content-between">
+                    <div class="row">
+                      <div class="col-sm-12">
+                          <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
+                              <thead style="background-color: #2b2155; color:#fff;">
+                                  <tr role="row">
+                                      <th>Project</th>
+                                      <th>Type</th>
+                                      <th>Contract</th>
+                                      <th>subscriptions</th>
+                                  </tr>
+                              </thead>
+                              <tbody> 
+                                  {% for project in subscriptions %}
+                              <tr role="row" class="odd">
+                                      <td ><a href="{% url 'project:projectdetail' project.pk %}">
+                                        <span class="badge badge-pill badge-light">{{project.name}} </span></a></td>
+                                      <td> {{project.get_project_type_display}}</td>
+                                      <td>   <span class="badge badge-pill badge-dark"> {{project.get_contract_display}} </span></td>
+                                      <td ><span  class="d-block text-danger"> {{project.contract_expiration}} </span></td>
+                                  </tr>    
+                              {% endfor %}
+                              </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+                  </div>
+            </div>
+          </div>
+          
+             {% comment %} <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body"><div style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                  <h4 class="card-title">
+                    <i class="fas fa-chart-line"></i>
+                    Projects
+                  </h4>
+                  <canvas id="myBarChart" style="display: block; height: 272px; width: 545px;"  width="681" height="340"></canvas>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+     </div> {% endcomment %}
       
    
     <!-- main-panel ends -->
   </div>
 
-  <script type="text/javascript">
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: [{% for project_type in type_list %} '{{ project_type }}', {% endfor %}],
-            datasets: [{
-                label:'Student',
-                data: [{% for number in number_list %} '{{ number }}', {% endfor %}],
-                backgroundColor:[
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 135, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(151, 102, 132, 1)',
-                'rgba(153, 99, 132, 1)',
-                'rgba(255, 159, 64, 1)',
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 135, 1)',
-                'rgba(25, 206, 86, 1)',
-                'rgba(211, 192, 192, 1)',
-                'rgba(234, 102, 132, 1)',
-                'rgba(153, 99, 132, 1)',
-                'rgba(255, 159, 64, 1)',
-                'gree',
-                'yellow',
-                ],
-
-                borderColor: [
-                'rgba(54, 162, 135, 1)',
-                'rgba(25, 206, 86, 1)',
-                'rgba(211, 192, 192, 1)',
-                'rgba(234, 102, 132, 1)',
-                'rgba(153, 99, 132, 1)',
-                'rgba(255, 159, 64, 1)',
-
-                ],
-
-                borderWidth: 1
-            }]
-        },
-
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    })
-</script>        
   {% endblock content %}
+

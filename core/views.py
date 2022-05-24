@@ -17,8 +17,9 @@ from django.views.generic import (
 from project.models import Project
 from contact.models import Company, Employee, Lead
 from django.contrib import messages
+from django.http import response
 # Create your views here.
-#Dashboard
+#Dashboard 
 
 
 class IndexView(TemplateView):
@@ -32,21 +33,11 @@ class IndexView(TemplateView):
         context["company_count"] =Company.objects.all().count()
         context["employees"] = Employee.objects.all().order_by('collab_start')
         context["client_count"] =Employee.objects.all().count()
-        context["leads"] = Lead.objects.all().order_by('status')
+        context["leads"] = Lead.objects.all().order_by('updated')
         context["lead_count"] =Lead.objects.all().count()
         return context 
 
-def typeView(request):
-    ec= Project.objects.filter(project_type='e-commerce').count()
-    ec =int(ec)
-    ws= Project.objects.filter(project_type='web site').count()
-    ws =int(ws)
-    wa= Project.objects.filter(project_type='web app').count()
-    wa =int(wa)
-    project_type_list=['e-commerce','web site' ,'web app' ]
-    number_list=['ec','ws' ,'wa' ]
-    context= {'project_type_list': project_type_list,'number_list': number_list }
-    return render('core:index.html', context)
+
 
 
 

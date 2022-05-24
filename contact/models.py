@@ -2,6 +2,7 @@ from email.policy import default
 from re import T
 from django.db import models
 from django.urls import reverse 
+from tinymce import models as tinymce_models
 
 
 # Create your models here.
@@ -88,7 +89,7 @@ class Lead(models.Model):
     source       = models.CharField( max_length=250, blank=True, null=True)
     project_type = models.CharField(choices=PROJECT_TYPE_CHOICES, max_length=2, blank=True, null=True)
     status       = models.CharField(choices=STATUS_TYPE_CHOICES, max_length=2, blank=True, null=True)
-    note         = models.TextField(blank=True, null=True)
+    note         = tinymce_models.HTMLField( blank=True, null=True)
     created      = models.DateField(auto_now=True)
     updated      = models.DateField(auto_now_add=True)
     def __str__(self):

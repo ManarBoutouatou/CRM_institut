@@ -73,18 +73,17 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
-                                        <thead>
+                                        <thead style="background-color: #2b2155; color:#fff;">
                                             <tr role="row">
-                                                <th>Name </th>
-                                                <th>Company</th>
-                                                <th>Email</th>
-                                                <th>Phone number</th>
-                                                <th>Decision</th>
-                                                <th>Project</th>
-                                                <th>source</th>
-                                                <th>Date</th>
-                                                <th></th>
-                                                <th >Actions</th>
+                                                <th style="width:400px;">Name </th>
+                                                <th style="width:400px;">Company</th>
+                                                <th style="width:400px;">Email</th>
+                                                <th style="width:400px;">Phone number</th>
+                                                <th style="width:400px;">Decision</th>
+                                                <th style="width:400px;">Project</th>
+                                                <th style="width:400px;">source</th>
+                                                <th style="width:400px;">Date</th>                                           
+                                                <th style="width:400px;">Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody> 
@@ -98,7 +97,6 @@
                                                 <td> {{employee.get_project_type_display}} </td>
                                                 <td>{{employee.source}}</td>
                                                 <td><span  class="d-block text-info">{{employee.collab_start}}</span></td>
-                                                <td></td>
                                                 <td>
                                                 <a href="{% url 'contact:clientdetail' employee.pk %}">
                                                 <button class="btn btn-outline-primary">View</button></a>

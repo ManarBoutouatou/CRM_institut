@@ -28,20 +28,20 @@
               </div>                     
               <div class="border-bottom  py-4">
                 <div class="py-4">
-                  <p class="clearfix"> <span class="float-left"> industry</span> <span class="float-right text-muted"> {{company.industry}} </span>  </p>
-                  <p cla&tss="clearfix"> <span class="float-left"> </span> <span class="float-right text-muted">  </span> </p>
-                  <p class="clearfix"> <span class="float-left"> email</span> <span class="float-right text-muted"> {{company.email}}</span></p>
-                  <p class="clearfix"> <span class="float-left"> mobile</span><span class="float-right text-muted">  {{company.mobile}} </span> </p>
-                  <p class="clearfix"> <span class="float-left"> website</span><span class="float-right text-muted">  {{company.website}} </span> </p>
-                  <p class="clearfix"> <span class="float-left"> adress</span><span class="float-right text-muted">  {{company.adress}} </span> </p>
-                  <p class="clearfix"> <span class="float-left"> rc_code</span><span class="float-right text-muted">  {{company.rc_code}} </span> </p>
-                  <p class="clearfix"> <span class="float-left"> art_code</span><span class="float-right text-muted">  {{company.art_code}} </span> </p>
-                  <p class="clearfix"> <span class="float-left"> nif_code</span><span class="float-right text-muted">  {{company.nif_code}} </span> </p>
-                  <p class="clearfix"> <span class="float-left"> nif_code</span><span class="float-right text-muted">  {{company.nif_code}} </span> </p>
-                  <p class="clearfix"> <span class="float-left"> responsible_person</span><span class="float-right text-muted">  {{company.responsible_person}} </span> </p>
-                  <p class="clearfix"> <span class="float-left"> cost </span><span class="float-right badge badge-pill badge-info">  {{company.annual_revenue}} </span> </p>
-                  <p class="clearfix"> <span class="float-left"> type</span><span class="float-right text-muted"> {{company.get_project_type_display}} </span> </p>
-                  <p class="clearfix"> <span class="float-left"> Start date </span><span class="float-right text-info">{{company.collab_start}}</span> </p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> industry</span> <span class="float-right text-muted"> {{company.industry}} </span>  </p>
+                  <p cla&tss="clearfix"> <span class="float-left" > </span> <span class="float-right text-muted">  </span> </p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> email</span> <span class="float-right text-muted"> {{company.email}}</span></p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> mobile</span><span class="float-right text-muted">  {{company.mobile}} </span> </p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> website</span><span class="float-right text-muted">  {{company.website}} </span> </p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> adress</span><span class="float-right text-muted">  {{company.adress}} </span> </p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> rc_code</span><span class="float-right text-muted">  {{company.rc_code}} </span> </p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> art_code</span><span class="float-right text-muted">  {{company.art_code}} </span> </p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> nif_code</span><span class="float-right text-muted">  {{company.nif_code}} </span> </p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> nif_code</span><span class="float-right text-muted">  {{company.nif_code}} </span> </p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> responsible_person</span><span class="float-right text-success">  {{company.responsible_person}} </span> </p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> cost </span><span class="float-right badge badge-pill badge-info">  {{company.annual_revenue}} </span> </p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> type</span><span class="float-right text-muted"> {{company.get_project_type_display}} </span> </p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> Start date </span><span class="float-right text-info">{{company.collab_start}}</span> </p>
                 </div>                                                       
               </div>
             </div>
@@ -68,7 +68,7 @@
                       </p>
                       <div class="table-responsive">
                         <table class="table">
-                          <thead>
+                          <thead style="background-color: #2b2155; color:#fff;">
                             <tr>
                               <th> Name</th>
                               <th> Decision case</th>
@@ -77,7 +77,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            {% for employee in employees %}
+                            {% for employee in company_employees %}
                            <tr>
                                <td> {{employee.name}} </td>
                                <td><span class="fe text-warning"> {{employee.get_decision_display}} </span></td>
@@ -98,7 +98,7 @@
                       </p>
                       <div class="table-responsive">
                         <table class="table">
-                          <thead>
+                          <thead style="background-color: #2b2155; color:#fff;">
                             <tr>
                               <th>Project</th>
                               <th>Start date</th>
@@ -108,13 +108,20 @@
                             </tr>
                           </thead>
                           <tbody>
-                            {% for project in projects %}
+                            {% for project in company_projects %}
                             <tr role="row" class="odd">
                                     <td > <span class="badge badge-pill badge-light">{{project.name}} </span></td>
                                     <td> <span  class="d-block text-info">{{project.started_date}}</span></td>
-                                    <td>{{project.get_status_display}}</td>
+                                    <td>
+                                      {% if project.get_status_display == 'confirm' %}
+                                          <span class="badge badge-pill badge-success"> {{project.get_status_display}}</span>
+                                      {% elif project.get_status_display == 'completed' %}
+                                          <span class="badge badge-pill badge-info">{{project.get_status_display}}</span>
+                                      {% else  %}
+                                           <span class="badge badge-pill badge-warning">{{project.get_status_display}}</span>
+                                      {% endif %}</td>
                                     <td><span class=" badge badge-pill badge-info">{{project.cost}} DZD </span></td>
-                                    <td>{{project.get_contract_display}}</td>
+                                    <td><span  class="badge badge-pill badge-dark"> {{project.get_contract_display}} </span></td>
                                     
                                     
                                 </tr>    

@@ -1,5 +1,6 @@
 from django.db import models
 from contact.models import Company, Employee
+from tinymce import models as tinymce_models
 
 # Create your models here.
 
@@ -21,7 +22,6 @@ STATUS_TYPE_CHOICES= (
     ('CO', 'confirm'),
     ('CP', 'completed'),
     ('PE', 'pending'),
-    ('CL', 'cancelled'),
 ) 
 class Project (models.Model): 
     name                    = models.CharField(max_length=254, blank=True)
@@ -34,7 +34,7 @@ class Project (models.Model):
     contract_expiration     = models.DateField(blank=True, null=True) 
     cost                    = models.DecimalField(max_digits=20 , decimal_places=0, blank=True, null=True)
     status                  = models.CharField(choices=STATUS_TYPE_CHOICES, max_length=2, blank=True, null=True)
-    description             = models.TextField(blank=True, null=True) 
+    description             = tinymce_models.HTMLField( blank=True, null=True)
     def __str__(self):
         return self.name
   

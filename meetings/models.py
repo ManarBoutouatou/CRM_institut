@@ -2,11 +2,12 @@ from datetime import datetime
 from django.db import models
 from django.urls import reverse
 from contact.models import Company, Employee
+from tinymce import models as tinymce_models
 # Create your models here.
 
 class Event(models.Model):
     title        = models.CharField(max_length=200)
-    description  = models.TextField()
+    description  = tinymce_models.HTMLField( blank=True, null=True)
     start_date   = models.DateField()
     start_time   = models.TimeField(blank=True, null=True,)
     end_time     = models.TimeField(blank=True, null=True,)

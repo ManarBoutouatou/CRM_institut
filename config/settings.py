@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'jchart',
     'import_export',
+    'tinymce',
     # 'bootstrapform',
     # 'crispy_forms',
     'bootstrap4',

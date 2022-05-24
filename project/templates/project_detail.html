@@ -23,14 +23,21 @@
               </div>                     
               <div class="border-bottom  py-4">
                 <div class="py-4">
-                  <p class="clearfix"> <span class="float-left"> Company</span> <span class="float-right text-muted">  {{project.company}} </span>  </p>
-                  <p class="clearfix"> <span class="float-left"> Start date </span><span class="float-right text-info">{{project.started_date}}</span> </p>
-                  <p class="clearfix"> <span class="float-left"> Deadline</span> <span class="float-right text-danger"> {{project.deadline}}</span></p>
-                  <p class="clearfix"> <span class="float-left"> manager</span><span class="float-right text-muted">  {{project.manager}} </span> </p>
-                  <p class="clearfix"> <span class="float-left"> type</span><span class="float-right text-muted"> {{project.get_project_type_display}} </span> </p>
-                  <p class="clearfix"> <span class="float-left"> contract</span><span class="float-right text-muted"> {{project.get_contract_display}} </span> </p>
-                  <p class="clearfix"> <span class="float-left"> status </span><span class="float-right text-muted">  {{project.get_status_display}} </span> </p>
-                  <p class="clearfix"> <span class="float-left"> cost </span><span class="float-right badge badge-pill badge-info">  {{project.cost}} </span> </p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> Company</span> <span class="float-right text-muted">  {{project.company}} </span>  </p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> Start date </span><span class="float-right text-info">{{project.started_date}}</span> </p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> Deadline</span> <span class="float-right text-danger"> {{project.deadline}}</span></p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> manager</span><span class="float-right  text-success">  {{project.manager}} </span> </p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> type</span><span class="float-right text-muted"> {{project.get_project_type_display}} </span> </p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> contract</span><span  class="float-right badge badge-pill badge-dark"> {{project.get_contract_display}} </span> </p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> status </span>  {% if project.get_status_display == 'confirm' %}
+                                                                                                                    <span class="float-right badge badge-pill badge-success"> {{project.get_status_display}}</span>
+                                                                                                            {% elif project.get_status_display == 'completed' %}
+                                                                                                                    <span class="float-right badge badge-pill badge-info">{{project.get_status_display}}</span>
+                                                                                                            {% else  %}
+                                                                                                                    <span class="float-right badge badge-pill badge-warning">{{project.get_status_display}}</span>
+                                                                                                            {% endif %}
+                                                                                              
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> cost </span><span class="float-right badge badge-pill badge-info">  {{project.cost}} </span> </p>
                 </div>                                                       
               </div>
             </div>
@@ -49,22 +56,18 @@
                
                 </ul>
               </div>
-              <div class="profile-feed">
-                <div class="d-flex align-items-start profile-feed-item">
-               
-                  <div class="ml-4">
-                    <h6>
-                      Description :
-                    </h6>
-                    <p>
-                      {{project.description}}
-                    </p>
-                  
+                 <div class="profile-feed">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title"> Description</h4>
+                      <p class="card-description">
+                         {{project.description|safe}}
+                      </p>
+                   
+                    </div>
                   </div>
                 </div>
-
-               
-              </div>
+             
             </div>
           </div> 
           

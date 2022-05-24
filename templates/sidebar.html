@@ -33,10 +33,10 @@
               <div class="profile-image">
                 {% comment %} <img  src="{{user.display_picture}}" alt="image"/> {% endcomment %}
 
-              {% if user.logo %} 
+              {% if user.picture %} 
                   <img  src="{{user.picture.url}}" alt="image"/>
               {% else %} 
-                  <img  src="{% static 'images/favicon.png' %}" alt="logo"/> 
+                  <img  src="{% static 'images/avatar.png' %}" alt="logo"/> 
               {% endif %} 
               </div>
               <div class="profile-name">
@@ -88,12 +88,12 @@
               <span class="menu-title">Project</span>
             </a>
           </li>
-          <li class="nav-item">
+          {% comment %} <li class="nav-item">
             <a class="nav-link" href="#"  >
               <i class="fas fa-solid fa-moon menu-icon"></i> 
               <span class="menu-title">Dark mode</span> 
             </a>
-          </li>
+          </li> {% endcomment %}
           {% comment %} <li class="nav-item"> 
             <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
               <i class="fas fa-solid fa-money-bill menu-icon"></i> 

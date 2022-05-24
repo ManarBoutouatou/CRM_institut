@@ -16,14 +16,14 @@
                 <div class="card-body">
                     <div class="container-fluid">
                       <img src="{% static 'images/logo.png' %}" style="width:200px; height:80px; float:left;" alt="logo"/>
-                      <h4 class="text-right my-5">{{event.title}}&nbsp;&nbsp;</h4> 
+                      {% comment %} <h4 class="text-right my-5">{{event.title}}&nbsp;&nbsp;</h4>  {% endcomment %}
                       <p class="text-right my-5">Date : {{event.start_date}}</p>
                       <hr>
                     </div>
                     <div class="container-fluid d-flex justify-content-between">
                       <div class="col-lg-3 pl-0">
                         <p class="mt-5 mb-2"><b>{{event.title}}</b></p>
-                        <p>{{event.company}}<br>{{event.manager}}<br></p>
+                        <p> <span style="font-weight: bold;">Meeting with :</span> {{event.company}}<br> <span style="font-weight: bold;">Manager :</span> {{event.manager}}<br></p>
                       </div>
                       <div class="col-lg-3 pr-0">
                         <p class="mt-5 mb-2 text-right"><b></b></p>
@@ -52,7 +52,7 @@
                             <tbody>
                                 
                               <tr class="text-right">
-                                <td class="text-left"> {{event.description}}</td>
+                                <td class="text-left"> {{event.description|safe}}</td>
                              
                               </tr>
                           

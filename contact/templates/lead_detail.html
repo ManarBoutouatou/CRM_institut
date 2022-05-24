@@ -23,10 +23,10 @@
               <div class="border-bottom  py-4">
                 <div class="py-4">
                   <p cla&tss="clearfix"> <span class="float-left"> </span> <span class="float-right text-muted">  </span> </p>
-                  <p class="clearfix"> <span class="float-left"> source</span> <span class="float-right text-muted"> {{lead.source}}</span></p>
-                  <p class="clearfix"> <span class="float-left"> type</span><span class="float-right text-muted"> {{lead.get_project_type_display}} </span> </p>
-                  <p class="clearfix"> <span class="float-left"> status</span><span class="float-right text-muted"> {{lead.get_status_display}}</span> </p>
-                  <p class="clearfix"> <span class="float-left"> created </span><span class="float-right text-info">{{lead.created}}</span> </p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> source</span> <span class="float-right text-muted"> {{lead.source}}</span></p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> type</span><span class="float-right text-muted"> {{lead.get_project_type_display}} </span> </p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> status</span><span class="float-right text-muted"> {{lead.get_status_display}}</span> </p>
+                  <p class="clearfix"> <span class="float-left" style="font-weight: bold;"> created </span><span class="float-right text-info">{{lead.created}}</span> </p>
                 </div>                                                       
               </div>
             </div>
@@ -49,7 +49,7 @@
                     <div class="card-body">
                       <h4 class="card-title"> Notes</h4>
                       <p class="card-description">
-                        {{lead.note}}
+                        {{lead.note|safe}}
                       </p>
                    
                     </div>
