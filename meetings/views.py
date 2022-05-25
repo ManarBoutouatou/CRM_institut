@@ -96,7 +96,7 @@ class EventsListView(RedirectPermissionRequiredMixin,ListView):
     def get_context_data(self, **kwargs):
         context = super(EventsListView, self).get_context_data(**kwargs)
         context["event_count"] =Event.objects.all().count()
-        filters= Eventsfilter(self.request.GET, queryset=Event.objects.all().order_by('start_time'))
+        filters= Eventsfilter(self.request.GET, queryset=Event.objects.all().order_by('start_date'))
         context["events"] = filters.qs
         return context
     

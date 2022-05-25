@@ -90,7 +90,7 @@
                                                 <td > <span class="badge badge-pill badge-light">{{project.name}} </span></td>
                                                 <td> <span  class="d-block text-info">{{project.started_date}}</span></td>
                                                 <td ><span  class="d-block text-danger"> {{project.deadline}} </span></td>
-                                                <td><span class="  text-success"> {{project.manager}}</span></td>
+                                                <td><span class="  text-success"> <a href="{% url 'contact:clientdetail' project.manager.pk %}" style=" text-decoration:none; color:green;"> {{project.manager}} </a></span></td>
                                                 <td><span  class="badge badge-pill badge-info"> {{project.cost}} DZD</span> </td>
                                                 <td> {{project.get_project_type_display}}</td>
                                                 <td> <span  class="badge badge-pill badge-dark">{{project.get_contract_display}}</span></td>

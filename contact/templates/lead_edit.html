@@ -78,7 +78,7 @@
                       <div class="form-group ">
                           <label class="col-sm-3 col-form-label" for="id_note">Note </label>
                           <div class="col-sm-6">
-                              <textarea cols="40" rows="10" name="note"  id="id_note" class="form-control "  > {{lead.note}}</textarea>
+                              <textarea cols="40" rows="10" name="note"  id="id_note" class="form-control "  > {{lead.note |safe}}</textarea>
                           </div>
                       </div>
                   </div> 

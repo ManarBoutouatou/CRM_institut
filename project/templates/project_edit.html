@@ -156,7 +156,7 @@
                                   <div class="form-group row">
                                       <label class="col-sm-3 col-form-label" for="id_description">description </label>
                                       <div class="col-sm-9">
-                                        <textarea name="description" cols="40" rows="10" class="form-control bg-white" id="id_description"> {{project.description}}</textarea>          
+                                        <textarea name="description" cols="40" rows="10" class="form-control bg-white" id="id_description"> {{project.description |safe}}</textarea>          
                                       </div>
                                   </div>
                                 </div>                         

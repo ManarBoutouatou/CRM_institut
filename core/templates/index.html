@@ -175,7 +175,7 @@
                                   {% for project in subscriptions %}
                               <tr role="row" class="odd">
                                       <td ><a href="{% url 'project:projectdetail' project.pk %}">
-                                        <span class="badge badge-pill badge-light">{{project.name}} </span></a></td>
+                                        <span class="badge badge-pill badge-light">{{project.name}} </span></td>
                                       <td> {{project.get_project_type_display}}</td>
                                       <td>   <span class="badge badge-pill badge-dark"> {{project.get_contract_display}} </span></td>
                                       <td ><span  class="d-block text-danger"> {{project.contract_expiration}} </span></td>

@@ -96,3 +96,7 @@ class Lead(models.Model):
         return str(self.company)
     def get_absolute_url(self):
         return reverse("contact:leaddetail", kwargs={"pk": self.pk})
+    
+   
+
+    

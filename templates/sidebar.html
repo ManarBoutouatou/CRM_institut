@@ -41,7 +41,7 @@
               </div>
               <div class="profile-name">
                 <p class="name">
-                  {{ user.get_username }}
+                  <a href="{% url 'accounts:userdetail' %}" style="text-decoration:none; color:black;">{{ user.get_username }} </a>
                 </p>
                 <p class="designation">
                   

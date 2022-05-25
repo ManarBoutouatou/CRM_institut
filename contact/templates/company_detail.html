@@ -79,7 +79,7 @@
                           <tbody>
                             {% for employee in company_employees %}
                            <tr>
-                               <td> {{employee.name}} </td>
+                               <td> <a href="{% url 'contact:clientdetail' employee.pk %}" style=" text-decoration:none; color:black;">{{employee.name}} </a></td>
                                <td><span class="fe text-warning"> {{employee.get_decision_display}} </span></td>
                                <td>{{employee.mobile}}</td>
                               <td> {{employee.email}} </td>
@@ -110,7 +110,7 @@
                           <tbody>
                             {% for project in company_projects %}
                             <tr role="row" class="odd">
-                                    <td > <span class="badge badge-pill badge-light">{{project.name}} </span></td>
+                                    <td > <span class="badge badge-pill badge-light"><a href="{% url 'project:projectdetail' project.pk %}" style=" text-decoration:none; color:black;"> {{project.name}} </a></span></td>
                                     <td> <span  class="d-block text-info">{{project.started_date}}</span></td>
                                     <td>
                                       {% if project.get_status_display == 'confirm' %}

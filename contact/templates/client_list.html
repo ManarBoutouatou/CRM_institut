@@ -90,7 +90,7 @@
                                             {% for employee in employees %} 
                                         <tr role="row" class="odd">
                                                 <td ><span class="badge badge-pill badge-light">{{employee.name}} </span></td>
-                                                <td> <a href="{{company.get_absolute_url}}">{{employee.company}}</a></td>
+                                                <td> <a href="{% url 'contact:companydetail' employee.company.pk %}" style=" text-decoration:none; color:black;">{{employee.company}}</a></td>
                                                 <td>{{employee.email}}</td>
                                                 <td>{{employee.mobile}}</td>
                                                 <td><span class="fe text-warning"> {{employee.get_decision_display}} </span></td>

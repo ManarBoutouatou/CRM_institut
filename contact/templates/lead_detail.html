@@ -18,7 +18,7 @@
           <div class="row">
             <div class="col-lg-4">
               <div class="border-bottom text-center pb-4">
-                <h4> {{lead.company}}</h4>
+                <h4> <a href="{% url 'contact:companydetail' lead.company.pk %}" style=" text-decoration:none; color:black;"> {{lead.company}} </a></h4>
               </div>                     
               <div class="border-bottom  py-4">
                 <div class="py-4">

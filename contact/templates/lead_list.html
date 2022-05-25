@@ -62,7 +62,7 @@
     <div class="card">
         <div class="card-body">
             <a href="{% url 'contact:addlead' %}" > <button type="submit" class="btn btn-primary mr-2" style="float:right;">New</button><a> 
-          <h4 class="card-title">Client list</h4>
+          <h4 class="card-title">Leads list</h4>
           <div class="row">
             <div class="col-12">
               <div class="table-responsive">
@@ -87,7 +87,7 @@
                                         <tbody> 
                                               {% for lead in leads %} 
                                         <tr role="row" class="odd">
-                                                <td> <a href="{{company.get_absolute_url}}">{{lead.company}}</a></td>
+                                                <td> <a href="{% url 'contact:companydetail' lead.company.pk %}" style=" text-decoration:none; color:black;">{{lead.company}}</a></td>
                                                 <td>{{lead.company.email}}</td>
                                                 <td>{{lead.company.mobile}}</td>
                                                 <td> {{lead.get_project_type_display}} </td>
